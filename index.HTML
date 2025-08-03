@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MUTCU Orientation 2025 - Create Your Flyer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,12 +22,20 @@
             --mutcu-red: #ff1229;
             --mutcu-teal: #30d5c8;
             --mutcu-light: #f4f7fb;
+            --mobile-scale: 1;
+        }
+
+        * {
+            touch-action: manipulation;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--mutcu-light);
-            touch-action: manipulation;
+            padding: 1rem;
+            padding-bottom: 2rem;
+            overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -41,19 +49,21 @@
 
         /* Main flyer container */
         #flyer-container {
-            width: 100%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 500px;
             aspect-ratio: 1 / 1;
             background: linear-gradient(135deg, #ffffff 85%, var(--mutcu-teal) 15%);
             position: relative;
             overflow: hidden;
             box-shadow: 0 12px 30px rgba(0,0,0,0.15);
             border-radius: 1.25rem;
-            padding: 1.5rem;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin: 0 auto;
+            gap: 0.8rem;
+            margin: 0 auto 1rem;
+            transform: scale(var(--mobile-scale));
+            transform-origin: top center;
         }
 
         /* Background decorative elements */
@@ -94,17 +104,17 @@
             overflow: hidden;
             background: linear-gradient(45deg, #e6e9ee, #f0f4f8);
             border-radius: 50%;
-            width: 200px;
-            height: 200px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto;
             transition: all 0.3s ease;
             z-index: 10;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
             #image-holder {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
             }
         }
 
@@ -138,7 +148,7 @@
             font-weight: 600;
             color: var(--mutcu-navy);
             z-index: 12;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
             padding: 1rem;
         }
@@ -148,12 +158,12 @@
             position: absolute;
             top: 0.5rem;
             left: 50%;
-            transform: translateX(-40%);
+            transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.9);
             padding: 0.4rem 0.8rem;
             border-radius: 2rem;
             font-family: 'Fredoka One', cursive;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--mutcu-red);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             z-index: 10;
@@ -161,9 +171,9 @@
             white-space: nowrap;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
             .flyer-countdown {
-                font-size: 1.25rem;
+                font-size: 1rem;
                 padding: 0.5rem 1rem;
                 top: 1rem;
             }
@@ -173,13 +183,21 @@
         .bottom-banner {
             position: relative;
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.6rem;
             margin-top: auto;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 0.75rem;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
             z-index: 15;
             margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 768px) {
+            .bottom-banner {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Social icons */
@@ -282,7 +300,7 @@
             margin: 0 3px;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
             .countdown-item {
                 min-width: 60px;
                 margin: 0 5px;
@@ -296,7 +314,7 @@
             font-family: 'Fredoka One', cursive;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
             .countdown-value {
                 font-size: 2rem;
             }
@@ -309,7 +327,7 @@
             letter-spacing: 1px;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
             .countdown-label {
                 font-size: 0.75rem;
             }
@@ -321,46 +339,76 @@
             z-index: 100;
         }
 
+        /* Main container */
+        .main-container {
+            max-width: 100%;
+            padding: 1rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Interactive controls */
+        .interactive-controls {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         /* Mobile-specific adjustments */
-        @media (max-width: 639px) {
+        @media (max-width: 767px) {
             body {
-                padding: 1rem;
+                padding: 0.8rem;
+                padding-bottom: 1.5rem;
             }
             
             #flyer-container {
-                padding: 1rem;
+                padding: 0.8rem;
+                width: 100%;
             }
             
-            .flex-col.items-center.space-y-8 > div:first-child {
-                margin-bottom: 0.5rem;
+            .countdown-value {
+                font-size: 1.3rem;
             }
             
-            #image-holder {
-                width: 180px;
-                height: 180px;
+            .countdown-label {
+                font-size: 0.6rem;
             }
             
             .bottom-banner {
-                padding: 0.6rem;
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
             
             .flyer-countdown {
-                font-size: 0.9rem;
-                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+                padding: 0.3rem 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            :root {
+                --mobile-scale: 0.95;
+            }
+            
+            #flyer-container {
+                padding: 0.6rem;
+            }
+            
+            .bottom-banner {
+                font-size: 0.7rem;
+                padding: 0.5rem;
             }
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
-    <div class="max-w-3xl w-full p-4 sm:p-8 bg-white rounded-2xl shadow-xl flex flex-col items-center space-y-6 sm:space-y-8">
-        <h1 class="text-3xl sm:text-5xl font-bold text-[var(--mutcu-navy)] font-display tracking-tight text-center">MUTCU ORIENTATION 2025</h1>
-        <p class="text-gray-600 text-center text-base sm:text-lg">Create your custom orientation flyer by uploading and adjusting your image!</p>
+<body>
+    <div class="main-container bg-white rounded-2xl shadow-xl flex flex-col items-center space-y-4 sm:space-y-6">
+        <h1 class="text-2xl sm:text-4xl font-bold text-[var(--mutcu-navy)] font-display tracking-tight text-center">MUTCU ORIENTATION 2025</h1>
+        <p class="text-gray-600 text-center text-sm sm:text-base">Create your custom orientation flyer by uploading and adjusting your image!</p>
 
         <!-- Countdown Timer -->
-        <div class="text-center bg-gray-100 p-3 sm:p-4 rounded-xl w-full max-w-md shadow-inner">
-            <p class="text-gray-600 font-semibold text-base sm:text-lg uppercase tracking-wider">Orientation begins in</p>
-            <div id="countdown-timer" class="mt-2">
+        <div class="text-center bg-gray-100 p-2 sm:p-3 rounded-xl w-full max-w-md shadow-inner">
+            <p class="text-gray-600 font-semibold text-sm sm:text-base uppercase tracking-wider">Orientation begins in</p>
+            <div id="countdown-timer" class="mt-1 sm:mt-2">
                 <div class="countdown-item">
                     <div class="countdown-value" id="countdown-days">00</div>
                     <div class="countdown-label">Days</div>
@@ -391,32 +439,32 @@
                 <span id="countdown-days-flyer">00</span> Days To Go
             </div>
             
-            <div class="flex flex-col items-center h-full relative z-10 space-y-4 sm:space-y-8">
+            <div class="flex flex-col items-center h-full relative z-10 space-y-3 sm:space-y-6">
                 <!-- Header: Logos -->
-                <div class="flex justify-between items-center w-full z-10">
-                    <img src="Full Logo_2Full color.png" alt="MUTCU Logo" class="h-16 sm:h-24 z-10">
-                    <img src="FOCUS-Kenya-logo.webp" alt="FOCUS Logo" class="w-12 h-12 sm:w-20 sm:h-20 z-10">
+                <div class="flex justify-between items-center w-full z-10 px-2">
+                    <img src="Full Logo_2Full color.png" alt="MUTCU Logo" class="h-14 sm:h-20 z-10">
+                    <img src="FOCUS-Kenya-logo.webp" alt="FOCUS Logo" class="w-10 h-10 sm:w-16 sm:h-16 z-10">
                 </div>
 
                 <!-- Main Content Area -->
-                <div class="flex flex-col sm:flex-row items-center justify-between w-full space-y-4 sm:space-y-0 sm:space-x-6 z-10">
-                    <div class="flex-1 text-center sm:text-left space-y-2 sm:space-y-3 z-10">
-                        <p class="text-base sm:text-xl font-bold font-montserrat text-[var(--mutcu-red)]">Join Us For</p>
-                        <h3 class="text-2xl sm:text-4xl font-montserrat font-bold text-[var(--mutcu-navy)] leading-tight">
+                <div class="flex flex-col sm:flex-row items-center justify-between w-full space-y-3 sm:space-y-0 sm:space-x-4 z-10 px-2">
+                    <div class="flex-1 text-center sm:text-left space-y-1 sm:space-y-2 z-10">
+                        <p class="text-sm sm:text-lg font-bold font-montserrat text-[var(--mutcu-red)]">Join Us For</p>
+                        <h3 class="text-xl sm:text-3xl font-montserrat font-bold text-[var(--mutcu-navy)] leading-tight">
                             MUTCU Orientation 2025
                         </h3>
-                        <p class="text-lg sm:text-2xl font-montserrat font-bold text-[var(--mutcu-orange)]">
+                        <p class="text-lg sm:text-xl font-montserrat font-bold text-[var(--mutcu-orange)]">
                           I Will Be Attending
                       </p>
-                        <h4 class="text-xl sm:text-2xl font-montserrat font-bold text-[var(--mutcu-navy)]">
+                        <h4 class="text-lg sm:text-xl font-montserrat font-bold text-[var(--mutcu-navy)]">
                             25th Aug - 1st Sep
                         </h4>
-                        <p class="text-base sm:text-xl font-bold font-montserrat text-[var(--mutcu-red)] tracking-wide">#EveryFresherForJesus</p>
+                        <p class="text-sm sm:text-lg font-bold font-montserrat text-[var(--mutcu-red)] tracking-wide">#EveryFresherForJesus</p>
                     </div>
                     <div class="flex-shrink-0 z-10">
                         <div id="image-holder" class="rounded-full" role="region" aria-label="User image holder">
-                            <span id="image-placeholder-text" class="absolute inset-0 flex flex-col items-center justify-center text-sm sm:text-base text-[var(--mutcu-navy)]">
-                                <i class="fas fa-camera text-2xl sm:text-3xl mb-1 sm:mb-2"></i>
+                            <span id="image-placeholder-text" class="absolute inset-0 flex flex-col items-center justify-center text-xs sm:text-sm text-[var(--mutcu-navy)]">
+                                <i class="fas fa-camera text-xl sm:text-2xl mb-1"></i>
                                 <span>Upload Your Image</span>
                             </span>
                         </div>
@@ -425,11 +473,11 @@
 
                 <!-- Bottom Banner - Critical Information -->
                 <div class="bottom-banner z-20 w-full">
-                    <div class="text-xs sm:text-base text-[var(--mutcu-navy)]">
+                    <div class="text-[var(--mutcu-navy)]">
                         <div class="text-center mb-1 sm:mb-2">
                             <span class="text-[var(--mutcu-red)] font-bold">Venue:</span>
                             <span> <b>Outside Assembly Hall</b></span>
-                            <span class="block font-bold text-[var(--mutcu-navy)] mt-1 text-sm sm:text-base">MURANG'A UNIVERSITY OF TECHNOLOGY CHRISTIAN UNION</span>
+                            <span class="block font-bold text-[var(--mutcu-navy)] mt-1 text-xs sm:text-sm">MURANG'A UNIVERSITY OF TECHNOLOGY CHRISTIAN UNION</span>
                             <span class="text-[var(--mutcu-red)] font-bold mt-1">Contact:</span>
                             <span> <b>+254-795-168-396</b></span>
                         </div>
@@ -445,28 +493,28 @@
         </div>
 
         <!-- Interactive Controls Section -->
-        <div class="w-full max-w-md space-y-4 sm:space-y-6 z-30">
+        <div class="interactive-controls space-y-3 sm:space-y-4 z-30 w-full">
             <!-- Upload Button -->
             <label for="image-upload" class="cursor-pointer block w-full z-30">
-                <div class="action-btn py-3 sm:py-4 px-6 rounded-xl text-center flex items-center justify-center space-x-2">
-                    <i class="fas fa-cloud-upload-alt text-lg sm:text-xl"></i>
-                    <span class="text-sm sm:text-base">UPLOAD IMAGE</span>
+                <div class="action-btn py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-center flex items-center justify-center space-x-2">
+                    <i class="fas fa-cloud-upload-alt text-base sm:text-lg"></i>
+                    <span class="text-xs sm:text-sm">UPLOAD IMAGE</span>
                 </div>
                 <input type="file" id="image-upload" class="hidden" accept="image/*" aria-label="Upload image">
             </label>
             
             <!-- Editing Controls -->
-            <div class="bg-gray-100 p-4 sm:p-6 rounded-xl space-y-4 sm:space-y-6 z-30">
-                <div class="space-y-3 sm:space-y-4">
+            <div class="bg-gray-100 p-3 sm:p-4 rounded-xl space-y-3 sm:space-y-4 z-30">
+                <div class="space-y-2 sm:space-y-3">
                     <div>
-                        <div class="flex justify-between items-center mb-1 sm:mb-2">
+                        <div class="flex justify-between items-center mb-1">
                             <label class="text-xs sm:text-sm font-medium text-[var(--mutcu-navy)]">ZOOM</label>
                             <span id="zoom-value" class="text-xs font-mono">100%</span>
                         </div>
                         <input type="range" id="zoom-slider" min="80" max="300" value="100" class="w-full" aria-label="Zoom image">
                     </div>
                     <div>
-                        <div class="flex justify-between items-center mb-1 sm:mb-2">
+                        <div class="flex justify-between items-center mb-1">
                             <label class="text-xs sm:text-sm font-medium text-[var(--mutcu-navy)]">ROTATE</label>
                             <span id="rotate-value" class="text-xs font-mono">0°</span>
                         </div>
@@ -474,37 +522,52 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                    <button id="reset-btn" class="secondary-btn py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium text-sm sm:text-base">
-                        <i class="fas fa-redo mr-1 sm:mr-2"></i> RESET
+                <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                    <button id="reset-btn" class="secondary-btn py-2 px-3 rounded-lg font-medium text-xs sm:text-sm">
+                        <i class="fas fa-redo mr-1"></i> RESET
                     </button>
-                    <button id="effects-btn" class="secondary-btn py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium text-sm sm:text-base">
-                        <i class="fas fa-magic mr-1 sm:mr-2"></i> EFFECTS
+                    <button id="effects-btn" class="secondary-btn py-2 px-3 rounded-lg font-medium text-xs sm:text-sm">
+                        <i class="fas fa-magic mr-1"></i> EFFECTS
                     </button>
                 </div>
             </div>
             
             <!-- Action Buttons -->
-            <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                <button id="download-btn" class="action-btn py-3 sm:py-4 px-6 rounded-xl flex items-center justify-center space-x-2">
-                    <i class="fas fa-download text-sm sm:text-base"></i>
-                    <span class="text-sm sm:text-base">DOWNLOAD</span>
+            <div class="grid grid-cols-2 gap-2 sm:gap-3 pb-2">
+                <button id="download-btn" class="action-btn py-2 sm:py-3 px-4 sm:px-6 rounded-xl flex items-center justify-center space-x-2">
+                    <i class="fas fa-download text-xs sm:text-sm"></i>
+                    <span class="text-xs sm:text-sm">DOWNLOAD</span>
                 </button>
-                <button id="share-btn" class="bg-gradient-to-r from-[var(--mutcu-red)] to-[var(--mutcu-orange)] text-white py-3 sm:py-4 px-6 rounded-xl flex items-center justify-center space-x-2 hover:shadow-lg transition-all">
-                    <i class="fas fa-share-alt text-sm sm:text-base"></i>
-                    <span class="text-sm sm:text-base">SHARE</span>
+                <button id="share-btn" class="bg-gradient-to-r from-[var(--mutcu-red)] to-[var(--mutcu-orange)] text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl flex items-center justify-center space-x-2 hover:shadow-lg transition-all">
+                    <i class="fas fa-share-alt text-xs sm:text-sm"></i>
+                    <span class="text-xs sm:text-sm">SHARE</span>
                 </button>
             </div>
         </div>
 
         <!-- Message Box -->
-        <div id="message-box" class="mt-3 sm:mt-4 p-3 sm:p-4 w-full max-w-sm text-center rounded-xl hidden flex items-center justify-center" role="alert">
-            <span id="message-text" class="text-sm sm:text-base"></span>
+        <div id="message-box" class="mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl hidden flex items-center justify-center" role="alert">
+            <span id="message-text" class="text-xs sm:text-sm"></span>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Adjust for mobile initially
+            function adjustForMobile() {
+                if (window.innerWidth <= 767) {
+                    document.documentElement.style.setProperty('--mobile-scale', '0.95');
+                    if (window.innerWidth < 400) {
+                        document.documentElement.style.setProperty('--mobile-scale', '0.9');
+                    }
+                } else {
+                    document.documentElement.style.setProperty('--mobile-scale', '1');
+                }
+            }
+
+            adjustForMobile();
+            window.addEventListener('resize', adjustForMobile);
+
             // DOM Elements
             const elements = {
                 imageUpload: document.getElementById('image-upload'),
@@ -572,7 +635,7 @@
                     elements.countdownDaysFlyer.textContent = days;
                     state.daysUntilOrientation = days;
                 } else {
-                    document.getElementById('countdown-timer').innerHTML = '<div class="text-xl font-bold text-[var(--mutcu-orange)]">Orientation is here!</div>';
+                    document.getElementById('countdown-timer').innerHTML = '<div class="text-lg sm:text-xl font-bold text-[var(--mutcu-orange)]">Orientation is here!</div>';
                     elements.countdownDaysFlyer.textContent = '0';
                     state.daysUntilOrientation = 0;
                 }
@@ -607,7 +670,7 @@
             // Show message
             function showMessage(message, type = 'info') {
                 elements.messageText.innerHTML = message;
-                elements.messageBox.className = `mt-3 sm:mt-4 p-3 sm:p-4 w-full max-w-sm text-center rounded-xl flex items-center justify-center ${type === 'error' ? 'bg-red-200 text-red-800' : 'bg-teal-100 text-[var(--mutcu-navy)]'}`;
+                elements.messageBox.className = `mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl flex items-center justify-center ${type === 'error' ? 'bg-red-200 text-red-800' : 'bg-teal-100 text-[var(--mutcu-navy)]'}`;
                 elements.messageBox.classList.remove('hidden');
                 
                 setTimeout(() => {
@@ -617,8 +680,8 @@
 
             // Show loading state
             function showLoading(message) {
-                elements.messageText.innerHTML = `<div class="spinner mr-3"></div> ${message}`;
-                elements.messageBox.className = "mt-3 sm:mt-4 p-3 sm:p-4 w-full max-w-sm text-center rounded-xl flex items-center justify-center bg-gray-200 text-gray-800";
+                elements.messageText.innerHTML = `<div class="spinner mr-2"></div> ${message}`;
+                elements.messageBox.className = "mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl flex items-center justify-center bg-gray-200 text-gray-800";
                 elements.messageBox.classList.remove('hidden');
             }
 
@@ -962,10 +1025,10 @@
                     } else {
                         // Fallback for browsers without Web Share API
                         const fallbackMessage = `
-                            <div class="text-center p-4">
-                                <p class="font-bold mb-2">Sharing not supported</p>
-                                <p class="text-sm mb-4">Your browser doesn't support direct sharing.</p>
-                                <p class="text-sm">Please download the flyer and share it manually.</p>
+                            <div class="text-center p-2">
+                                <p class="font-bold mb-1 text-sm">Sharing not supported</p>
+                                <p class="text-xs mb-2">Your browser doesn't support direct sharing.</p>
+                                <p class="text-xs">Please download the flyer and share it manually.</p>
                             </div>
                         `;
                         showMessage(fallbackMessage, 'info');
@@ -1004,6 +1067,7 @@
                 if (state.uploadedImage) {
                     updateImageTransform();
                 }
+                adjustForMobile();
             });
 
             // Initialize slider displays
