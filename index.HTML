@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUTCU Orientation 2025 - Create Your Flyer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,21 +22,11 @@
             --mutcu-red: #ff1229;
             --mutcu-teal: #30d5c8;
             --mutcu-light: #f4f7fb;
-            --mobile-scale: 1;
-        }
-
-        * {
-            touch-action: manipulation;
-            box-sizing: border-box;
         }
 
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--mutcu-light);
-            padding: 1rem;
-            padding-bottom: 2rem;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .font-montserrat {
@@ -47,23 +37,19 @@
             font-family: 'Fredoka One', cursive;
         }
 
-        /* Main flyer container */
+        /* Main flyer container - now uses Tailwind for padding */
         #flyer-container {
-            width: 95%;
-            max-width: 500px;
+            width: 100%;
+            max-width: 600px; /* Max width for desktop */
             aspect-ratio: 1 / 1;
             background: linear-gradient(135deg, #ffffff 85%, var(--mutcu-teal) 15%);
             position: relative;
             overflow: hidden;
             box-shadow: 0 12px 30px rgba(0,0,0,0.15);
             border-radius: 1.25rem;
-            padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
-            margin: 0 auto 1rem;
-            transform: scale(var(--mobile-scale));
-            transform-origin: top center;
+            gap: 0.5rem; /* Reduced gap for mobile */
         }
 
         /* Background decorative elements */
@@ -95,27 +81,18 @@
             left: -80px;
         }
 
-        /* Image holder styling */
+        /* Image holder styling - size is now handled by Tailwind classes for responsiveness */
         #image-holder {
-            border: 6px solid #ff1229;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15), inset 0 0 0 4px var(--mutcu-orange);
+            border: 4px solid #ff1229; /* Thinner border for mobile */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15), inset 0 0 0 3px var(--mutcu-orange);
             cursor: grab;
             position: relative;
             overflow: hidden;
             background: linear-gradient(45deg, #e6e9ee, #f0f4f8);
             border-radius: 50%;
-            width: 160px;
-            height: 160px;
             margin: 0 auto;
             transition: all 0.3s ease;
             z-index: 10;
-        }
-
-        @media (min-width: 768px) {
-            #image-holder {
-                width: 200px;
-                height: 200px;
-            }
         }
 
         #image-holder:hover {
@@ -129,7 +106,6 @@
             cursor: inherit;
             object-fit: cover;
             z-index: 11;
-            touch-action: none;
         }
 
         #image-holder:active {
@@ -148,56 +124,43 @@
             font-weight: 600;
             color: var(--mutcu-navy);
             z-index: 12;
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 1rem;
         }
 
         /* Countdown on flyer */
         .flyer-countdown {
             position: absolute;
-            top: 0.5rem;
+            top: 0.75rem;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.9);
-            padding: 0.4rem 0.8rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 2rem;
             font-family: 'Fredoka One', cursive;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Adjusted size for mobile */
             color: var(--mutcu-red);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             z-index: 10;
             border: 2px solid var(--mutcu-orange);
-            white-space: nowrap;
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+             .flyer-countdown {
+                font-size: 1.25rem;
+                padding: 0.5rem 1rem;
+             }
         }
 
-        @media (min-width: 768px) {
-            .flyer-countdown {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-                top: 1rem;
-            }
-        }
 
         /* Bottom banner styling */
         .bottom-banner {
             position: relative;
             width: 100%;
-            padding: 0.6rem;
+            padding: 0.5rem;
             margin-top: auto;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 0.75rem;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
             z-index: 15;
-            margin-bottom: 0.5rem;
-            font-size: 0.8rem;
-        }
-
-        @media (min-width: 768px) {
-            .bottom-banner {
-                padding: 0.8rem;
-                font-size: 0.9rem;
-            }
+            margin-bottom: 0.5rem; /* Added white space at bottom */
         }
 
         /* Social icons */
@@ -210,8 +173,8 @@
             color: white;
             align-items: center;
             justify-content: center;
-            margin: 0 0.25rem;
-            font-size: 0.9rem;
+            margin: 0;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
             z-index: 16;
         }
@@ -295,42 +258,29 @@
         /* Countdown timer */
         .countdown-item {
             display: inline-block;
-            min-width: 50px;
+            min-width: 50px; /* Adjusted for mobile */
             text-align: center;
-            margin: 0 3px;
-        }
-
-        @media (min-width: 768px) {
-            .countdown-item {
-                min-width: 60px;
-                margin: 0 5px;
-            }
+            margin: 0 2px;
         }
 
         .countdown-value {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Adjusted for mobile */
             font-weight: bold;
             color: var(--mutcu-navy);
             font-family: 'Fredoka One', cursive;
         }
-
-        @media (min-width: 768px) {
-            .countdown-value {
-                font-size: 2rem;
-            }
-        }
-
+        
         .countdown-label {
-            font-size: 0.65rem;
+            font-size: 0.65rem; /* Adjusted for mobile */
             text-transform: uppercase;
             color: var(--mutcu-red);
             letter-spacing: 1px;
         }
-
-        @media (min-width: 768px) {
-            .countdown-label {
-                font-size: 0.75rem;
-            }
+        
+        @media (min-width: 640px) { /* sm breakpoint */
+            .countdown-item { min-width: 60px; margin: 0 5px; }
+            .countdown-value { font-size: 2rem; }
+            .countdown-label { font-size: 0.75rem; }
         }
 
         /* Message box */
@@ -338,77 +288,17 @@
             transition: all 0.3s ease;
             z-index: 100;
         }
-
-        /* Main container */
-        .main-container {
-            max-width: 100%;
-            padding: 1rem;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        /* Interactive controls */
-        .interactive-controls {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Mobile-specific adjustments */
-        @media (max-width: 767px) {
-            body {
-                padding: 0.8rem;
-                padding-bottom: 1.5rem;
-            }
-            
-            #flyer-container {
-                padding: 0.8rem;
-                width: 100%;
-            }
-            
-            .countdown-value {
-                font-size: 1.3rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.6rem;
-            }
-            
-            .bottom-banner {
-                font-size: 0.75rem;
-            }
-            
-            .flyer-countdown {
-                font-size: 0.8rem;
-                padding: 0.3rem 0.7rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            :root {
-                --mobile-scale: 0.95;
-            }
-            
-            #flyer-container {
-                padding: 0.6rem;
-            }
-            
-            .bottom-banner {
-                font-size: 0.7rem;
-                padding: 0.5rem;
-            }
-        }
     </style>
 </head>
-<body>
-    <div class="main-container bg-white rounded-2xl shadow-xl flex flex-col items-center space-y-4 sm:space-y-6">
-        <h1 class="text-2xl sm:text-4xl font-bold text-[var(--mutcu-navy)] font-display tracking-tight text-center">MUTCU ORIENTATION 2025</h1>
-        <p class="text-gray-600 text-center text-sm sm:text-base">Create your custom orientation flyer by uploading and adjusting your image!</p>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
+    <div class="max-w-3xl w-full p-4 sm:p-8 bg-white rounded-2xl shadow-xl flex flex-col items-center space-y-6">
+        <h1 class="text-3xl sm:text-5xl font-bold text-[var(--mutcu-navy)] font-display tracking-tight text-center">MUTCU ORIENTATION 2025</h1>
+        <p class="text-gray-600 text-center text-base sm:text-lg">Create your custom orientation flyer by uploading and adjusting your image!</p>
 
         <!-- Countdown Timer -->
-        <div class="text-center bg-gray-100 p-2 sm:p-3 rounded-xl w-full max-w-md shadow-inner">
-            <p class="text-gray-600 font-semibold text-sm sm:text-base uppercase tracking-wider">Orientation begins in</p>
-            <div id="countdown-timer" class="mt-1 sm:mt-2">
+        <div class="text-center bg-gray-100 p-4 rounded-xl w-full max-w-md shadow-inner">
+            <p class="text-gray-600 font-semibold text-sm sm:text-lg uppercase tracking-wider">Orientation begins in</p>
+            <div id="countdown-timer" class="mt-2 flex justify-center items-center">
                 <div class="countdown-item">
                     <div class="countdown-value" id="countdown-days">00</div>
                     <div class="countdown-label">Days</div>
@@ -429,7 +319,8 @@
         </div>
 
         <!-- Flyer Preview Section -->
-        <div id="flyer-container" class="relative rounded-2xl w-full max-w-md mx-auto">
+        <!-- Responsive padding added here -->
+        <div id="flyer-container" class="relative rounded-2xl w-full max-w-md mx-auto p-4 sm:p-6">
             <div id="teal-shape"></div>
             <div id="decor-1" class="decor-blob"></div>
             <div id="decor-2" class="decor-blob"></div>
@@ -439,49 +330,53 @@
                 <span id="countdown-days-flyer">00</span> Days To Go
             </div>
             
-            <div class="flex flex-col items-center h-full relative z-10 space-y-3 sm:space-y-6">
+            <div class="flex flex-col items-center h-full relative z-10 space-y-4">
                 <!-- Header: Logos -->
-                <div class="flex justify-between items-center w-full z-10 px-2">
-                    <img src="Full Logo_2Full color.png" alt="MUTCU Logo" class="h-14 sm:h-20 z-10">
-                    <img src="FOCUS-Kenya-logo.webp" alt="FOCUS Logo" class="w-10 h-10 sm:w-16 sm:h-16 z-10">
+                <div class="flex justify-between items-center w-full z-10">
+                    <!-- Responsive logo sizes -->
+                    <img src="https://raw.githubusercontent.com/RIARA-project/mutcu-orientation-flyer/main/public/Full%20Logo_2Full%20color.png" alt="MUTCU Logo" class="h-12 sm:h-20 z-10" onerror="this.style.display='none'">
+                    <img src="https://raw.githubusercontent.com/RIARA-project/mutcu-orientation-flyer/main/public/FOCUS-Kenya-logo.webp" alt="FOCUS Logo" class="h-12 sm:h-16 z-10" onerror="this.style.display='none'">
                 </div>
 
-                <!-- Main Content Area -->
-                <div class="flex flex-col sm:flex-row items-center justify-between w-full space-y-3 sm:space-y-0 sm:space-x-4 z-10 px-2">
-                    <div class="flex-1 text-center sm:text-left space-y-1 sm:space-y-2 z-10">
-                        <p class="text-sm sm:text-lg font-bold font-montserrat text-[var(--mutcu-red)]">Join Us For</p>
-                        <h3 class="text-xl sm:text-3xl font-montserrat font-bold text-[var(--mutcu-navy)] leading-tight">
+                <!-- Main Content Area: Stacks on mobile, row on larger screens -->
+                <div class="flex flex-col sm:flex-row items-center justify-between w-full space-y-3 sm:space-y-0 sm:space-x-4 z-10 flex-grow">
+                    <!-- Text content: Centered on mobile, left-aligned on larger screens -->
+                    <div class="flex-1 text-center sm:text-left space-y-1 z-10 order-2 sm:order-1">
+                        <p class="text-base sm:text-xl font-bold font-montserrat text-[var(--mutcu-red)]">Join Us For</p>
+                        <h3 class="text-2xl sm:text-4xl font-montserrat font-bold text-[var(--mutcu-navy)] leading-tight">
                             MUTCU Orientation 2025
                         </h3>
-                        <p class="text-lg sm:text-xl font-montserrat font-bold text-[var(--mutcu-orange)]">
+                        <p class="text-lg sm:text-2xl font-montserrat font-bold text-[var(--mutcu-orange)]">
                           I Will Be Attending
                       </p>
-                        <h4 class="text-lg sm:text-xl font-montserrat font-bold text-[var(--mutcu-navy)]">
+                        <h4 class="text-lg sm:text-2xl font-montserrat font-bold text-[var(--mutcu-navy)]">
                             25th Aug - 1st Sep
                         </h4>
-                        <p class="text-sm sm:text-lg font-bold font-montserrat text-[var(--mutcu-red)] tracking-wide">#EveryFresherForJesus</p>
+                        <p class="text-base sm:text-xl font-bold font-montserrat text-[var(--mutcu-red)] tracking-wide">#EveryFresherForJesus</p>
                     </div>
-                    <div class="flex-shrink-0 z-10">
-                        <div id="image-holder" class="rounded-full" role="region" aria-label="User image holder">
-                            <span id="image-placeholder-text" class="absolute inset-0 flex flex-col items-center justify-center text-xs sm:text-sm text-[var(--mutcu-navy)]">
-                                <i class="fas fa-camera text-xl sm:text-2xl mb-1"></i>
-                                <span>Upload Your Image</span>
+                    <!-- Image holder: Appears above text on mobile -->
+                    <div class="flex-shrink-0 z-10 order-1 sm:order-2">
+                        <!-- Responsive image holder size -->
+                        <div id="image-holder" class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48" role="region" aria-label="User image holder">
+                            <span id="image-placeholder-text" class="absolute inset-0 flex flex-col items-center justify-center text-xs text-center p-2 text-[var(--mutcu-navy)]">
+                                <i class="fas fa-camera text-2xl mb-1"></i>
+                                <span>Upload Image</span>
                             </span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Bottom Banner - Critical Information -->
-                <div class="bottom-banner z-20 w-full">
-                    <div class="text-[var(--mutcu-navy)]">
-                        <div class="text-center mb-1 sm:mb-2">
+                <div class="bottom-banner z-20">
+                    <div class="text-xs sm:text-sm text-[var(--mutcu-navy)]">
+                        <div class="text-center">
                             <span class="text-[var(--mutcu-red)] font-bold">Venue:</span>
                             <span> <b>Outside Assembly Hall</b></span>
-                            <span class="block font-bold text-[var(--mutcu-navy)] mt-1 text-xs sm:text-sm">MURANG'A UNIVERSITY OF TECHNOLOGY CHRISTIAN UNION</span>
+                            <span class="block font-bold text-[var(--mutcu-navy)] mt-1">MURANG'A UNIVERSITY CHRISTIAN UNION</span>
                             <span class="text-[var(--mutcu-red)] font-bold mt-1">Contact:</span>
                             <span> <b>+254-795-168-396</b></span>
                         </div>
-                       <div class="flex justify-center space-x-2 mt-2 sm:mt-3">
+                       <div class="flex justify-center space-x-3 mt-2">
                             <a href="https://www.facebook.com/p/Muranga-University-of-Technology-Christian-Union-1-100068859581695/" class="social-icon" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/muranga_university_cu/?hl=en" class="social-icon" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.youtube.com/channel/UCvG2cK3l_KPyUQ7y3CK4vFw" class="social-icon" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -493,81 +388,66 @@
         </div>
 
         <!-- Interactive Controls Section -->
-        <div class="interactive-controls space-y-3 sm:space-y-4 z-30 w-full">
+        <div class="w-full max-w-md space-y-6 z-30">
             <!-- Upload Button -->
             <label for="image-upload" class="cursor-pointer block w-full z-30">
-                <div class="action-btn py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-center flex items-center justify-center space-x-2">
-                    <i class="fas fa-cloud-upload-alt text-base sm:text-lg"></i>
-                    <span class="text-xs sm:text-sm">UPLOAD IMAGE</span>
+                <div class="action-btn py-3 px-6 rounded-xl text-center flex items-center justify-center space-x-2">
+                    <i class="fas fa-cloud-upload-alt text-xl"></i>
+                    <span>UPLOAD IMAGE</span>
                 </div>
                 <input type="file" id="image-upload" class="hidden" accept="image/*" aria-label="Upload image">
             </label>
             
             <!-- Editing Controls -->
-            <div class="bg-gray-100 p-3 sm:p-4 rounded-xl space-y-3 sm:space-y-4 z-30">
-                <div class="space-y-2 sm:space-y-3">
+            <div class="bg-gray-100 p-4 sm:p-6 rounded-xl space-y-6 z-30">
+                <div class="space-y-4">
                     <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="text-xs sm:text-sm font-medium text-[var(--mutcu-navy)]">ZOOM</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-medium text-[var(--mutcu-navy)]">ZOOM</label>
                             <span id="zoom-value" class="text-xs font-mono">100%</span>
                         </div>
                         <input type="range" id="zoom-slider" min="80" max="300" value="100" class="w-full" aria-label="Zoom image">
                     </div>
                     <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="text-xs sm:text-sm font-medium text-[var(--mutcu-navy)]">ROTATE</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-medium text-[var(--mutcu-navy)]">ROTATE</label>
                             <span id="rotate-value" class="text-xs font-mono">0°</span>
                         </div>
                         <input type="range" id="rotate-slider" min="-180" max="180" value="0" class="w-full" aria-label="Rotate image">
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-2 sm:gap-3">
-                    <button id="reset-btn" class="secondary-btn py-2 px-3 rounded-lg font-medium text-xs sm:text-sm">
-                        <i class="fas fa-redo mr-1"></i> RESET
+                <div class="grid grid-cols-2 gap-4">
+                    <button id="reset-btn" class="secondary-btn py-3 px-4 rounded-lg font-medium">
+                        <i class="fas fa-redo mr-2"></i> RESET
                     </button>
-                    <button id="effects-btn" class="secondary-btn py-2 px-3 rounded-lg font-medium text-xs sm:text-sm">
-                        <i class="fas fa-magic mr-1"></i> EFFECTS
+                    <button id="effects-btn" class="secondary-btn py-3 px-4 rounded-lg font-medium">
+                        <i class="fas fa-magic mr-2"></i> EFFECTS
                     </button>
                 </div>
             </div>
             
             <!-- Action Buttons -->
-            <div class="grid grid-cols-2 gap-2 sm:gap-3 pb-2">
-                <button id="download-btn" class="action-btn py-2 sm:py-3 px-4 sm:px-6 rounded-xl flex items-center justify-center space-x-2">
-                    <i class="fas fa-download text-xs sm:text-sm"></i>
-                    <span class="text-xs sm:text-sm">DOWNLOAD</span>
+            <div class="grid grid-cols-2 gap-4">
+                <button id="download-btn" class="action-btn py-3 px-6 rounded-xl flex items-center justify-center space-x-2">
+                    <i class="fas fa-download"></i>
+                    <span>DOWNLOAD</span>
                 </button>
-                <button id="share-btn" class="bg-gradient-to-r from-[var(--mutcu-red)] to-[var(--mutcu-orange)] text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl flex items-center justify-center space-x-2 hover:shadow-lg transition-all">
-                    <i class="fas fa-share-alt text-xs sm:text-sm"></i>
-                    <span class="text-xs sm:text-sm">SHARE</span>
+                <button id="share-btn" class="bg-gradient-to-r from-[var(--mutcu-red)] to-[var(--mutcu-orange)] text-white py-3 px-6 rounded-xl flex items-center justify-center space-x-2 hover:shadow-lg transition-all">
+                    <i class="fas fa-share-alt"></i>
+                    <span>SHARE</span>
                 </button>
             </div>
         </div>
 
         <!-- Message Box -->
-        <div id="message-box" class="mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl hidden flex items-center justify-center" role="alert">
-            <span id="message-text" class="text-xs sm:text-sm"></span>
+        <div id="message-box" class="mt-4 p-4 w-full max-w-sm text-center rounded-xl hidden flex items-center justify-center" role="alert">
+            <span id="message-text"></span>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Adjust for mobile initially
-            function adjustForMobile() {
-                if (window.innerWidth <= 767) {
-                    document.documentElement.style.setProperty('--mobile-scale', '0.95');
-                    if (window.innerWidth < 400) {
-                        document.documentElement.style.setProperty('--mobile-scale', '0.9');
-                    }
-                } else {
-                    document.documentElement.style.setProperty('--mobile-scale', '1');
-                }
-            }
-
-            adjustForMobile();
-            window.addEventListener('resize', adjustForMobile);
-
             // DOM Elements
             const elements = {
                 imageUpload: document.getElementById('image-upload'),
@@ -605,13 +485,14 @@
                 originalHeight: 0,
                 initialZoom: 100,
                 currentFilter: 'none',
-                daysUntilOrientation: 0,
-                touchIdentifier: null
+                daysUntilOrientation: 0
             };
 
             // Create image element
             const imgElement = new Image();
             imgElement.className = "absolute transition-all duration-200 ease-out";
+            // Use CORS for images so they don't taint the canvas
+            imgElement.crossOrigin = "anonymous";
             elements.imageHolder.appendChild(imgElement);
 
             // Update countdown timer
@@ -631,17 +512,15 @@
                     elements.countdownMinutes.textContent = String(minutes).padStart(2, '0');
                     elements.countdownSeconds.textContent = String(seconds).padStart(2, '0');
                     
-                    // Update flyer countdown (days only)
                     elements.countdownDaysFlyer.textContent = days;
                     state.daysUntilOrientation = days;
                 } else {
-                    document.getElementById('countdown-timer').innerHTML = '<div class="text-lg sm:text-xl font-bold text-[var(--mutcu-orange)]">Orientation is here!</div>';
+                    document.getElementById('countdown-timer').innerHTML = '<div class="text-xl font-bold text-[var(--mutcu-orange)]">Orientation is here!</div>';
                     elements.countdownDaysFlyer.textContent = '0';
                     state.daysUntilOrientation = 0;
                 }
             }
 
-            // Initialize and update countdown every second
             updateCountdown();
             setInterval(updateCountdown, 1000);
 
@@ -655,7 +534,6 @@
                 const finalWidth = state.originalWidth * scaleFactor;
                 const finalHeight = state.originalHeight * scaleFactor;
                 
-                // Clamp image position
                 state.imgLeft = Math.max(containerSize - finalWidth, Math.min(0, state.imgLeft));
                 state.imgTop = Math.max(containerSize - finalHeight, Math.min(0, state.imgTop));
 
@@ -670,7 +548,7 @@
             // Show message
             function showMessage(message, type = 'info') {
                 elements.messageText.innerHTML = message;
-                elements.messageBox.className = `mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl flex items-center justify-center ${type === 'error' ? 'bg-red-200 text-red-800' : 'bg-teal-100 text-[var(--mutcu-navy)]'}`;
+                elements.messageBox.className = `mt-4 p-4 w-full max-w-sm text-center rounded-xl flex items-center justify-center ${type === 'error' ? 'bg-red-200 text-red-800' : 'bg-teal-100 text-[var(--mutcu-navy)]'}`;
                 elements.messageBox.classList.remove('hidden');
                 
                 setTimeout(() => {
@@ -680,14 +558,14 @@
 
             // Show loading state
             function showLoading(message) {
-                elements.messageText.innerHTML = `<div class="spinner mr-2"></div> ${message}`;
-                elements.messageBox.className = "mt-2 sm:mt-3 p-2 sm:p-3 w-full max-w-sm text-center rounded-xl flex items-center justify-center bg-gray-200 text-gray-800";
+                elements.messageText.innerHTML = `<div class="spinner mr-3"></div> ${message}`;
+                elements.messageBox.className = "mt-4 p-4 w-full max-w-sm text-center rounded-xl flex items-center justify-center bg-gray-200 text-gray-800";
                 elements.messageBox.classList.remove('hidden');
             }
 
             // Update slider values display
             function updateSliderDisplays() {
-                elements.zoomValue.textContent = `${state.zoom}%`;
+                elements.zoomValue.textContent = `${Math.round(state.zoom)}%`;
                 elements.rotateValue.textContent = `${state.rotation}°`;
             }
 
@@ -735,29 +613,26 @@
                         const containerSize = elements.imageHolder.offsetWidth;
                         const aspectRatio = state.originalWidth / state.originalHeight;
 
-                        // Calculate initial zoom to fit
-                        state.initialZoom = aspectRatio > 1 ? 
+                        state.initialZoom = aspectRatio >= 1 ? 
                             (containerSize / state.originalHeight) * 100 : 
                             (containerSize / state.originalWidth) * 100;
 
-                        // Initialize values
                         state.zoom = state.initialZoom;
                         state.rotation = 0;
                         state.imgLeft = (containerSize - (state.originalWidth * (state.initialZoom / 100))) / 2;
                         state.imgTop = (containerSize - (state.originalHeight * (state.initialZoom / 100))) / 2;
                         state.currentFilter = 'none';
                         
-                        // Update controls
-                        elements.zoomSlider.min = Math.floor(state.initialZoom);
+                        elements.zoomSlider.min = Math.floor(state.initialZoom * 0.8);
+                        elements.zoomSlider.max = 300;
                         elements.zoomSlider.value = Math.floor(state.initialZoom);
                         elements.rotateSlider.value = 0;
                         updateSliderDisplays();
 
-                        // Hide placeholder
                         elements.imagePlaceholder.style.display = 'none';
                         
                         updateImageTransform();
-                        showMessage("Image uploaded! Drag to position and adjust with sliders.", 'success');
+                        showMessage("Image uploaded! Drag to position.", 'success');
                     };
                 };
                 reader.onerror = () => {
@@ -766,311 +641,150 @@
                 reader.readAsDataURL(file);
             });
             
-            // Drag functionality for mouse
-            elements.imageHolder.addEventListener('mousedown', (e) => {
+            // Drag functionality (Mouse and Touch)
+            function startDrag(clientX, clientY) {
                 if (!state.uploadedImage) return;
-                e.preventDefault();
                 state.isDragging = true;
-                state.startX = e.clientX;
-                state.startY = e.clientY;
+                state.startX = clientX;
+                state.startY = clientY;
                 elements.imageHolder.style.cursor = 'grabbing';
-            });
+            }
 
-            document.addEventListener('mousemove', (e) => {
+            function drag(clientX, clientY) {
                 if (!state.isDragging || !state.uploadedImage) return;
-                const dx = e.clientX - state.startX;
-                const dy = e.clientY - state.startY;
-                
+                const dx = clientX - state.startX;
+                const dy = clientY - state.startY;
                 state.imgLeft += dx;
                 state.imgTop += dy;
-
                 updateImageTransform();
-                state.startX = e.clientX;
-                state.startY = e.clientY;
-            });
+                state.startX = clientX;
+                state.startY = clientY;
+            }
 
-            document.addEventListener('mouseup', () => {
+            function endDrag() {
                 state.isDragging = false;
                 elements.imageHolder.style.cursor = state.uploadedImage ? 'grab' : 'default';
-            });
+            }
+
+            elements.imageHolder.addEventListener('mousedown', (e) => { e.preventDefault(); startDrag(e.clientX, e.clientY); });
+            document.addEventListener('mousemove', (e) => { if (state.isDragging) { e.preventDefault(); drag(e.clientX, e.clientY); } });
+            document.addEventListener('mouseup', endDrag);
             
-            // Touch events for mobile - improved
-            elements.imageHolder.addEventListener('touchstart', (e) => {
-                if (!state.uploadedImage || e.touches.length > 1) return;
-                e.preventDefault();
-                state.isDragging = true;
-                const touch = e.touches[0];
-                state.startX = touch.clientX;
-                state.startY = touch.clientY;
-                state.touchIdentifier = touch.identifier;
-                elements.imageHolder.style.cursor = 'grabbing';
-            }, { passive: false });
-
-            document.addEventListener('touchmove', (e) => {
-                if (!state.isDragging || !state.uploadedImage) return;
-                
-                // Find our touch point if there are multiple touches
-                let touch;
-                for (let i = 0; i < e.touches.length; i++) {
-                    if (e.touches[i].identifier === state.touchIdentifier) {
-                        touch = e.touches[i];
-                        break;
-                    }
-                }
-                
-                if (!touch) return;
-                
-                e.preventDefault();
-                const dx = touch.clientX - state.startX;
-                const dy = touch.clientY - state.startY;
-                
-                state.imgLeft += dx;
-                state.imgTop += dy;
-
-                updateImageTransform();
-                state.startX = touch.clientX;
-                state.startY = touch.clientY;
-            }, { passive: false });
-
-            document.addEventListener('touchend', (e) => {
-                if (!state.isDragging) return;
-                
-                // Check if our specific touch ended
-                for (let i = 0; i < e.changedTouches.length; i++) {
-                    if (e.changedTouches[i].identifier === state.touchIdentifier) {
-                        state.isDragging = false;
-                        state.touchIdentifier = null;
-                        elements.imageHolder.style.cursor = state.uploadedImage ? 'grab' : 'default';
-                        break;
-                    }
-                }
-            });
+            elements.imageHolder.addEventListener('touchstart', (e) => { e.preventDefault(); const touch = e.touches[0]; startDrag(touch.clientX, touch.clientY); });
+            document.addEventListener('touchmove', (e) => { if (state.isDragging) { e.preventDefault(); const touch = e.touches[0]; drag(touch.clientX, touch.clientY); } });
+            document.addEventListener('touchend', endDrag);
             
             // Slider events
-            elements.zoomSlider.addEventListener('input', (e) => {
-                state.zoom = e.target.value;
-                updateImageTransform();
-                updateSliderDisplays();
-            });
+            elements.zoomSlider.addEventListener('input', (e) => { state.zoom = e.target.value; updateImageTransform(); updateSliderDisplays(); });
+            elements.rotateSlider.addEventListener('input', (e) => { state.rotation = e.target.value; updateImageTransform(); updateSliderDisplays(); });
             
-            elements.rotateSlider.addEventListener('input', (e) => {
-                state.rotation = e.target.value;
-                updateImageTransform();
-                updateSliderDisplays();
-            });
-            
-            // Reset button
+            // Button events
             elements.resetBtn.addEventListener('click', resetImage);
             
-            // Effects button
             elements.effectsBtn.addEventListener('click', () => {
                 if (!state.uploadedImage) {
                     showMessage("Please upload an image first.", 'error');
                     return;
                 }
-                
-                const filters = [
-                    'none',
-                    'contrast(1.2) brightness(1.1)',
-                    'sepia(0.5) contrast(1.1)',
-                    'grayscale(0.5) brightness(1.05)',
-                    'hue-rotate(15deg) saturate(1.2)'
-                ];
-                
+                const filters = ['none', 'contrast(1.2) brightness(1.1)', 'sepia(0.5)', 'grayscale(1)'];
                 const currentIndex = filters.indexOf(state.currentFilter);
                 const nextIndex = (currentIndex + 1) % filters.length;
                 state.currentFilter = filters[nextIndex];
-                
                 updateImageTransform();
                 showMessage(`Applied filter ${nextIndex + 1}/${filters.length}`, 'success');
             });
             
-            // Download button with enhanced capture settings for mobile
-            elements.downloadBtn.addEventListener('click', async function() {
-                if (!state.uploadedImage) {
+            // *** REVISED Download/Share Function ***
+            async function generateFlyerImage(isForSharing = false) {
+                 if (!state.uploadedImage) {
                     showMessage("Please upload an image first.", 'error');
-                    return;
+                    return null;
+                }
+                showLoading(isForSharing ? "Preparing to share..." : "Generating your flyer...");
+
+                // 1. Create a clone of the flyer
+                const flyerToCapture = elements.flyerContainer.cloneNode(true);
+                
+                // 2. Style the clone for high-quality, off-screen capture
+                flyerToCapture.style.position = 'absolute';
+                flyerToCapture.style.left = '-9999px'; // Position off-screen
+                flyerToCapture.style.top = '0px';
+                flyerToCapture.style.width = '800px'; // Set a fixed high resolution width
+                flyerToCapture.style.height = '800px'; // Set a fixed high resolution height
+                flyerToCapture.style.maxWidth = 'none';
+                
+                // 3. Append to body to make it renderable
+                document.body.appendChild(flyerToCapture);
+
+                // Ensure image inside the clone is also using CORS
+                const clonedImg = flyerToCapture.querySelector('#image-holder img');
+                if(clonedImg) {
+                    clonedImg.crossOrigin = "anonymous";
+                    clonedImg.src = imgElement.src; // Re-assign src to be sure
                 }
 
                 try {
-                    showLoading("Generating your flyer...");
-                    
-                    // Temporarily ensure all elements are fully visible
-                    const originalStyles = {
-                        bottomBanner: elements.flyerContainer.querySelector('.bottom-banner').style.cssText,
-                        imageHolder: elements.imageHolder.style.cssText,
-                        countdown: document.getElementById('flyer-countdown').style.cssText
-                    };
-                    
-                    // Force visibility for capture
-                    elements.flyerContainer.querySelector('.bottom-banner').style.cssText = 'opacity: 1 !important; visibility: visible !important; background: rgba(255,255,255,0.95) !important; z-index: 20 !important;';
-                    elements.imageHolder.style.cssText = 'z-index: 10 !important;';
-                    document.getElementById('flyer-countdown').style.cssText = 'opacity: 1 !important; visibility: visible !important; z-index: 10 !important;';
-
-                    // Adjust scale based on device
-                    const isMobile = window.innerWidth <= 768;
-                    const scale = isMobile ? 2 : 3;
-
-                    const canvas = await html2canvas(elements.flyerContainer, {
-                        scale: scale,
+                    // 4. Run html2canvas on the styled clone
+                    const canvas = await html2canvas(flyerToCapture, {
+                        scale: 2, // Use a higher scale for better quality
                         useCORS: true,
-                        logging: false,
                         allowTaint: true,
-                        backgroundColor: 'white',
-                        ignoreElements: (element) => false,
-                        onclone: (clonedDoc) => {
-                            // Ensure all elements are visible in the cloned document
-                            const banner = clonedDoc.querySelector('.bottom-banner');
-                            if (banner) {
-                                banner.style.opacity = '1';
-                                banner.style.visibility = 'visible';
-                                banner.style.background = 'rgba(255,255,255,0.95)';
-                                banner.style.zIndex = '20';
-                            }
-                            const holder = clonedDoc.getElementById('image-holder');
-                            if (holder) {
-                                holder.style.zIndex = '10';
-                            }
-                            const countdown = clonedDoc.getElementById('flyer-countdown');
-                            if (countdown) {
-                                countdown.style.opacity = '1';
-                                countdown.style.visibility = 'visible';
-                                countdown.style.zIndex = '10';
-                                // Update the countdown text in the clone
-                                const daysElement = clonedDoc.getElementById('countdown-days-flyer');
-                                if (daysElement) {
-                                    daysElement.textContent = state.daysUntilOrientation;
-                                }
-                            }
-                        }
+                        backgroundColor: '#ffffff',
+                        logging: false,
                     });
-
-                    // Restore original styles
-                    elements.flyerContainer.querySelector('.bottom-banner').style.cssText = originalStyles.bottomBanner;
-                    elements.imageHolder.style.cssText = originalStyles.imageHolder;
-                    document.getElementById('flyer-countdown').style.cssText = originalStyles.countdown;
-                    
-                    // Create download link
-                    const link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png');
-                    link.download = 'MUTCU-Orientation-2025.png';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-
-                    showMessage("Flyer downloaded successfully with all details!", 'See you Soon');
+                     // 5. Remove the clone from the DOM
+                    document.body.removeChild(flyerToCapture);
+                    return canvas;
                 } catch (error) {
                     console.error('Error generating flyer:', error);
-                    showMessage("Failed to download flyer. Please try again.", 'error');
+                    showMessage("Failed to generate flyer. Please try again.", 'error');
+                    document.body.removeChild(flyerToCapture); // Clean up on error
+                    return null;
                 }
+            }
+
+            elements.downloadBtn.addEventListener('click', async function() {
+                const canvas = await generateFlyerImage(false);
+                if (!canvas) return;
+
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'MUTCU-Orientation-2025.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showMessage("Flyer downloaded successfully!", 'success');
             });
-            
-            // Share button with improved mobile support
+
             elements.shareBtn.addEventListener('click', async function() {
-                if (!state.uploadedImage) {
-                    showMessage("Please upload an image first.", 'error');
-                    return;
-                }
+                const canvas = await generateFlyerImage(true);
+                if (!canvas) return;
 
                 try {
-                    showLoading("Preparing to share...");
+                    if (!navigator.share) {
+                        showMessage("Sharing not supported on this browser. Please download.", 'error');
+                        return;
+                    }
                     
-                    // First generate the image to share
-                    const isMobile = window.innerWidth <= 768;
-                    const scale = isMobile ? 2 : 3;
-
-                    const canvas = await html2canvas(elements.flyerContainer, {
-                        scale: scale,
-                        useCORS: true,
-                        logging: false,
-                        backgroundColor: 'white',
-                        ignoreElements: (element) => false,
-                        onclone: (clonedDoc) => {
-                            // Ensure visibility in clone
-                            const banner = clonedDoc.querySelector('.bottom-banner');
-                            if (banner) {
-                                banner.style.opacity = '1';
-                                banner.style.visibility = 'visible';
-                                banner.style.background = 'rgba(255,255,255,0.95)';
-                            }
-                            const countdown = clonedDoc.getElementById('flyer-countdown');
-                            if (countdown) {
-                                countdown.style.opacity = '1';
-                                countdown.style.visibility = 'visible';
-                                const daysElement = clonedDoc.getElementById('countdown-days-flyer');
-                                if (daysElement) {
-                                    daysElement.textContent = state.daysUntilOrientation;
-                                }
-                            }
-                        }
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.9));
+                    const file = new File([blob], 'MUTCU-Orientation.jpg', { type: 'image/jpeg' });
+                    
+                    await navigator.share({
+                        title: 'MUTCU Orientation 2025',
+                        text: "I'm attending MUTCU Orientation 2025! #EveryFresherForJesus",
+                        files: [file]
                     });
+                    showMessage("Shared successfully!", "success");
 
-                    // Use Web Share API if available
-                    if (navigator.share) {
-                        canvas.toBlob(async (blob) => {
-                            const file = new File([blob], 'MUTCU-Orientation.jpg', { type: 'image/jpeg' });
-                            
-                            try {
-                                await navigator.share({
-                                    title: 'MUTCU Orientation 2025',
-                                    text: "I'm attending MUTCU Orientation 2025! #EveryFresherForJesus",
-                                    files: [file]
-                                });
-                            } catch (err) {
-                                if (err.name !== 'AbortError') {
-                                    showMessage("Sharing was cancelled", 'info');
-                                }
-                            }
-                        }, 'image/jpeg', 0.8);
-                    } else {
-                        // Fallback for browsers without Web Share API
-                        const fallbackMessage = `
-                            <div class="text-center p-2">
-                                <p class="font-bold mb-1 text-sm">Sharing not supported</p>
-                                <p class="text-xs mb-2">Your browser doesn't support direct sharing.</p>
-                                <p class="text-xs">Please download the flyer and share it manually.</p>
-                            </div>
-                        `;
-                        showMessage(fallbackMessage, 'info');
-                    }
                 } catch (error) {
-                    console.error('Error:', error);
                     if (error.name !== 'AbortError') {
-                        showMessage("Failed to share. Please try downloading instead.", 'error');
+                        console.error('Share error:', error);
+                        showMessage("Failed to share. Try downloading instead.", 'error');
                     }
                 }
             });
 
-            // Keyboard accessibility
-            elements.imageHolder.setAttribute('tabindex', '0');
-            elements.imageHolder.addEventListener('keydown', (e) => {
-                if (!state.uploadedImage) return;
-                if (e.key === 'ArrowLeft') state.imgLeft -= 10;
-                if (e.key === 'ArrowRight') state.imgLeft += 10;
-                if (e.key === 'ArrowUp') state.imgTop -= 10;
-                if (e.key === 'ArrowDown') state.imgTop += 10;
-                if (e.key === '+') {
-                    state.zoom = Math.min(300, state.zoom + 10);
-                    elements.zoomSlider.value = state.zoom;
-                    updateSliderDisplays();
-                }
-                if (e.key === '-') {
-                    state.zoom = Math.max(state.initialZoom, state.zoom - 10);
-                    elements.zoomSlider.value = state.zoom;
-                    updateSliderDisplays();
-                }
-                updateImageTransform();
-            });
-
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                if (state.uploadedImage) {
-                    updateImageTransform();
-                }
-                adjustForMobile();
-            });
-
-            // Initialize slider displays
+            window.addEventListener('resize', () => { if (state.uploadedImage) updateImageTransform(); });
             updateSliderDisplays();
         });
     </script>
