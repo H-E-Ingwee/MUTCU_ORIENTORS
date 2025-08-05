@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUTCU Orientation 2025 - Create Your Flyer</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
@@ -318,6 +322,7 @@
         <h1 class="text-3xl sm:text-5xl font-bold text-[var(--mutcu-navy)] font-display tracking-tight text-center">MUTCU ORIENTATION 2025</h1>
         <p class="text-gray-600 text-center text-base sm:text-lg">Create your custom orientation flyer by uploading and adjusting your image!</p>
 
+        <!-- Countdown Timer -->
         <div class="text-center bg-gray-100 p-3 sm:p-4 rounded-xl w-full max-w-md shadow-inner">
             <p class="text-gray-600 font-semibold text-base sm:text-lg uppercase tracking-wider">Orientation begins in</p>
             <div id="countdown-timer" class="mt-2 flex justify-center">
@@ -340,21 +345,25 @@
             </div>
         </div>
 
+        <!-- Flyer Preview Section -->
         <div id="flyer-container" class="relative rounded-2xl w-full mx-auto">
             <div id="teal-shape"></div>
             <div id="decor-1" class="decor-blob"></div>
             <div id="decor-2" class="decor-blob"></div>
             
+            <!-- Countdown on flyer -->
             <div id="flyer-countdown" class="flyer-countdown">
                 <span id="countdown-days-flyer">00</span> Days To Go
             </div>
             
             <div class="flex flex-col items-center h-full relative z-10 space-y-4 sm:space-y-8">
+                <!-- Header: Logos -->
                 <div class="flex justify-between items-center w-full z-10">
                     <img src="Full Logo_2Full color.png" alt="MUTCU Logo" class="h-16 sm:h-20 z-10">
                     <img src="FOCUS-Kenya-logo.webp" alt="FOCUS Logo" class="w-12 h-12 sm:w-16 sm:h-16 z-10">
                 </div>
 
+                <!-- Main Content Area -->
                 <div class="flex flex-col sm:flex-row items-center justify-between w-full space-y-4 sm:space-y-0 sm:space-x-6 z-10 text-center sm:text-left">
                     <div class="flex-1 space-y-2 sm:space-y-3 z-10">
                         <p class="text-base sm:text-xl font-bold font-montserrat text-[var(--mutcu-red)]">Join Us For</p>
@@ -379,6 +388,7 @@
                     </div>
                 </div>
 
+                <!-- Bottom Banner - Critical Information -->
                 <div class="bottom-banner z-20">
                     <div class="text-sm sm:text-base text-[var(--mutcu-navy)] text-center">
                         <div class="mb-2">
@@ -399,7 +409,9 @@
             </div>
         </div>
 
+        <!-- Interactive Controls Section -->
         <div class="w-full max-w-md space-y-4 sm:space-y-6 z-30">
+            <!-- Upload Button -->
             <label for="image-upload" class="cursor-pointer block w-full z-30">
                 <div class="action-btn py-3 px-4 sm:py-4 sm:px-6 rounded-xl text-center flex items-center justify-center space-x-2 text-base sm:text-lg">
                     <i class="fas fa-cloud-upload-alt text-xl"></i>
@@ -408,6 +420,7 @@
                 <input type="file" id="image-upload" class="hidden" accept="image/*" aria-label="Upload image">
             </label>
             
+            <!-- Editing Controls -->
             <div class="bg-gray-100 p-4 sm:p-6 rounded-xl space-y-4 sm:space-y-6 z-30">
                 <div class="space-y-4">
                     <div>
@@ -436,6 +449,7 @@
                 </div>
             </div>
             
+            <!-- Action Buttons -->
             <div class="grid grid-cols-2 gap-3 sm:gap-4">
                 <button id="download-btn" class="action-btn py-3 px-4 sm:py-4 sm:px-6 rounded-xl flex items-center justify-center space-x-2 text-base sm:text-lg">
                     <i class="fas fa-download"></i>
@@ -448,6 +462,7 @@
             </div>
         </div>
 
+        <!-- Message Box -->
         <div id="message-box" class="mt-4 p-3 sm:p-4 w-full max-w-sm text-center rounded-xl hidden flex items-center justify-center text-sm sm:text-base" role="alert">
             <span id="message-text"></span>
         </div>
@@ -509,7 +524,7 @@
                 if (difference > 0) {
                     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60)) / (1000 * 60));
                     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
                     elements.countdownDays.textContent = String(days).padStart(2, '0');
