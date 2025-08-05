@@ -1,115 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUTCU Orientation 2025 - Responsive Flyer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --mutcu-navy: #04003d;
-            --mutcu-orange: #ff9700;
-            --mutcu-red: #ff1229;
-            --mutcu-teal: #30d5c8;
-            --mutcu-light: #f4f7fb;
-        }
-
-        body {
-            font-family: sans-serif;
-            background-color: var(--mutcu-light);
-        }
-
-        #flyer-container {
-            width: 90vw;
-            max-width: 600px;
-            background: linear-gradient(135deg, #ffffff 85%, var(--mutcu-teal) 15%);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            #flyer-container {
-                width: 100vw;
-                padding: 1rem;
-            }
-            #image-holder {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
-        #image-holder {
-            border: 6px solid var(--mutcu-red);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15), inset 0 0 0 4px var(--mutcu-orange);
-            border-radius: 50%;
-            width: 250px;
-            height: 250px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #image-holder img {
-            position: absolute;
-            object-fit: cover;
-        }
-
-        .bottom-banner {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 0.75rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            padding: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUTCU Orientation 2025 - Create Your Flyer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --mutcu-navy: #04003d;
+      --mutcu-orange: #ff9700;
+      --mutcu-red: #ff1229;
+      --mutcu-teal: #30d5c8;
+      --mutcu-light: #f4f7fb;
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--mutcu-light);
+    }
+    #flyer-container {
+      width: 90vw;
+      max-width: 600px;
+      background: linear-gradient(135deg, #ffffff 85%, var(--mutcu-teal) 15%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      #flyer-container {
+        width: 100vw;
+        padding: 1rem;
+      }
+      #image-holder {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    #image-holder {
+      border: 6px solid var(--mutcu-red);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 0 0 4px var(--mutcu-orange);
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #image-holder img {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .bottom-banner {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 0.75rem;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
-    <div id="flyer-container">
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-[var(--mutcu-navy)]">MUTCU Orientation 2025</h1>
-            <p class="text-[var(--mutcu-red)] font-bold">#EveryFresherForJesus</p>
-        </div>
-
-        <div id="image-holder">
-            <img src="https://via.placeholder.com/250" alt="Flyer Image" style="width: 100%; height: 100%;">
-        </div>
-
-        <div class="text-center mt-4">
-            <p class="text-[var(--mutcu-orange)] font-bold">25th Aug - 1st Sep</p>
-        </div>
-
-        <div class="bottom-banner text-center mt-4">
-            <p><strong>Venue:</strong> Outside Assembly Hall</p>
-            <p><strong>Contact:</strong> +254-795-168-396</p>
-        </div>
-
-        <div class="mt-4">
-            <button onclick="downloadFlyer()" class="bg-[var(--mutcu-navy)] text-white py-2 px-4 rounded">Download Flyer</button>
-        </div>
+  <div id="flyer-container">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-[var(--mutcu-navy)] font-display">MUTCU Orientation 2025</h1>
+      <p class="text-[var(--mutcu-red)] font-bold font-montserrat">#EveryFresherForJesus</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-        function downloadFlyer() {
-            const flyer = document.getElementById('flyer-container');
-            const scale = window.innerWidth < 768 ? 2 : 3;
+    <div id="flyer-countdown" class="text-center bg-white rounded-full px-4 py-1 shadow text-[var(--mutcu-red)] font-bold mt-2">
+      <span id="countdown-days">00</span> Days To Go
+    </div>
 
-            html2canvas(flyer, {
-                scale,
-                useCORS: true,
-                backgroundColor: 'white'
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'MUTCU-Flyer.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-    </script>
+    <div id="image-holder">
+      <span class="text-[var(--mutcu-navy)] text-center text-sm">Upload Your Image</span>
+    </div>
+
+    <div class="text-center mt-4">
+      <p class="text-[var(--mutcu-orange)] font-bold text-xl font-montserrat">25th Aug - 1st Sep</p>
+    </div>
+
+    <div class="bottom-banner text-center mt-4 font-montserrat text-sm sm:text-base">
+      <p><strong class="text-[var(--mutcu-red)]">Venue:</strong> Outside Assembly Hall</p>
+      <p class="mt-1"><strong class="text-[var(--mutcu-red)]">Contact:</strong> +254-795-168-396</p>
+    </div>
+
+    <div class="flex justify-center mt-4 space-x-3">
+      <a href="https://www.facebook.com/p/Muranga-University-of-Technology-Christian-Union-1-100068859581695/" target="_blank" class="text-white bg-[var(--mutcu-navy)] p-2 rounded-full"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/muranga_university_cu/?hl=en" target="_blank" class="text-white bg-[var(--mutcu-navy)] p-2 rounded-full"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/channel/UCvG2cK3l_KPyUQ7y3CK4vFw" target="_blank" class="text-white bg-[var(--mutcu-navy)] p-2 rounded-full"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@mutcu001" target="_blank" class="text-white bg-[var(--mutcu-navy)] p-2 rounded-full"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <div class="mt-4">
+      <input type="file" accept="image/*" id="uploadInput" class="block w-full text-sm text-gray-500" />
+    </div>
+
+    <div class="flex justify-center gap-4 mt-4">
+      <button onclick="zoom(-10)" class="px-4 py-2 bg-[var(--mutcu-navy)] text-white rounded">- Zoom</button>
+      <button onclick="zoom(10)" class="px-4 py-2 bg-[var(--mutcu-navy)] text-white rounded">+ Zoom</button>
+    </div>
+
+    <div class="mt-4">
+      <button onclick="downloadFlyer()" class="bg-gradient-to-r from-[var(--mutcu-navy)] to-[var(--mutcu-orange)] text-white py-3 px-6 rounded-xl shadow-md hover:scale-105 transition">Download Flyer</button>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date('2025-08-25T00:00:00');
+      const now = new Date();
+      const difference = targetDate - now;
+      const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
+      document.getElementById('countdown-days').textContent = String(days).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const uploadInput = document.getElementById('uploadInput');
+    const imageHolder = document.getElementById('image-holder');
+
+    uploadInput.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.src = event.target.result;
+        img.style.position = 'absolute';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        imageHolder.innerHTML = '';
+        imageHolder.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function zoom(amount) {
+      const img = imageHolder.querySelector('img');
+      if (!img) return;
+      const currentScale = parseFloat(img.dataset.scale || 1);
+      const newScale = Math.min(Math.max(0.5, currentScale + amount / 100), 3);
+      img.style.transform = `scale(${newScale})`;
+      img.dataset.scale = newScale;
+    }
+
+    function downloadFlyer() {
+      const flyer = document.getElementById('flyer-container');
+      const scale = window.innerWidth < 768 ? 2 : 3;
+      html2canvas(flyer, {
+        scale,
+        useCORS: true,
+        backgroundColor: 'white',
+      }).then((canvas) => {
+        const link = document.createElement('a');
+        link.download = 'MUTCU-Orientation-2025.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
 </body>
 </html>
